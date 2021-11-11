@@ -6,8 +6,9 @@
 .column-bk {
     background-color: white;
     height: 100vh;
-    width: 40vw;
+    width: 60%;
     padding-top: 7rem;
+    padding-bottom: 7rem;
 }
 
 .column-buttons {
