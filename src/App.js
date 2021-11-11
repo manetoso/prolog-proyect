@@ -1,16 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
+import './app.css'
+import Header from './assets/components/header/Header'
+import MainColumn from './assets/components/main-column/main-column'
 
 const App = props => {
   return (
     <div>
-      Hi world
+      <Header title='Easy Weights'/>
+      <MainColumn/>
     </div>
   )
-}
-
-App.propTypes = {
-
 }
 
 export default App

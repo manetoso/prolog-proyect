@@ -1,0 +1,24 @@
+.column {
+    display: flex;
+    justify-content: center;
+}
+
+.column-bk {
+    background-color: white;
+    height: 100vh;
+    width: 40vw;
+    padding-top: 7rem;
+}
+
+.column-buttons {
+    margin: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .column-bk {
+        width: 100vw;
+    }   
+}

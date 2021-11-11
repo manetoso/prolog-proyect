@@ -1,0 +1,31 @@
+.button {
+    display: inline-flex;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    background-color: transparent;
+    /* font-family: var(--choosen-font-family-montserrat);
+    font-size: var(--choosen-font-size-sm);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--choosen-line-height-normal);
+    letter-spacing: var(--choosen-letter-spacing-tight); */
+    padding: 16px 58px;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+
+.button-primary {
+    background-color: #FF857F;
+    color: white;
+}
+.button-primary:hover {
+    filter: brightness(1.2);
+}
+.button-secondary {
+    color: #FF857F;
+    border-color: #FF857F;
+}
+.button-secondary:hover {
+    color: white;
+    background-color: #FF857F;
+    border-color: #FF857F;
+}
