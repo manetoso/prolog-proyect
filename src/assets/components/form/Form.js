@@ -1,38 +1,64 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./form.css";
+import { useForm } from "../../../hooks/useForm";
+import Button from "../../button/Button";
+import { calculed } from "../../utils/calculed";
+import Swal from "sweetalert2";
 
 const Form = (props) => {
+  const [formValues, handleInputChange, reset]  = useForm({
+    gender : '',
+    corporalMass: '',
+    corporalFat: '',
+    muscularMass: '',
+    visceralFat: '',
+    waitstMeasurement: ''
+  })
+  const { gender, corporalMass, corporalFat,
+          muscularMass, visceralFat, waitstMeasurement 
+        } = formValues
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    console.log(formValues)
+    calculed(gender, corporalMass, corporalFat, muscularMass, visceralFat, waitstMeasurement)
+  }
   return (
     <>
       <div className="card border-primary m-3 full-width rounded">
-        <div className="card-header text-center">Header</div>
+        <div className="card-header text-center">Salud, dinero y amor</div>
         <div className="card-body text-primary">
-          <form>
+          <form onSubmit = { onSubmit }>
             <fieldset>
-              <legend>lorem ipsum</legend>
+              <legend>Calculo de datos</legend>
               <div className="form-group row">
                 <label
-                  for="gender"
+                  htmlFor="gender"
                   className="col-sm-2 col-form-label text-center"
                 >
-                  Gender
+                  Genero
                 </label>
                 <div className="col-sm-10">
-                  <select className="form-select text-center">
-                    <option value="1">1</option>
+                  <select className="form-select text-center"
+                          name='gender' onChange= { handleInputChange }>
+                    <option >-</option>
+                    <option value="1" >Masculino</option>
+                    <option value="0">Femenino</option>
                   </select>
                 </div>
                 <div className="form-group row">
                   <div className="form-floating m-4">
-                    <input
-                      for="imc"
+                    <input                      
                       type="text"
                       id="floatingIMC"
                       className="form-control text-center"
                       placeholder="imc"
+                      name = 'corporalMass'
+                      value = { corporalMass }
+                      onChange = { handleInputChange }
                     />
-                    <label for="floatingIMC" className="floatingInput">
+                    <label htmlFor="floatingIMC" className="floatingInput">
                       Indice Masa Corporal
                     </label>
                   </div>
@@ -40,27 +66,31 @@ const Form = (props) => {
                 <div className="form-group row">
                   <div className="form-floating m-4 mt-0">
                     <input
-                      for="imc"
                       type="text"
                       id="floatingIMC"
                       className="form-control text-center"
                       placeholder="imc"
+                      name = 'corporalFat'
+                      value = { corporalFat }
+                      onChange = { handleInputChange }
                     />
-                    <label for="floatingIMC" className="floatingInput">
-                      Indice Grada Corporal
+                    <label htmlFor="floatingIMC" className="floatingInput">
+                      Indice Grasa Corporal
                     </label>
                   </div>
                 </div>
                 <div className="form-group row">
                   <div className="form-floating m-4 mt-0">
                     <input
-                      for="imc"
                       type="text"
                       id="floatingIMC"
                       className="form-control text-center"
                       placeholder="imc"
+                      name = 'muscularMass'
+                      value = { muscularMass }
+                      onChange = { handleInputChange }
                     />
-                    <label for="floatingIMC" className="floatingInput">
+                    <label htmlFor="floatingIMC" className="floatingInput">
                       Indice Masa Muscular
                     </label>
                   </div>
@@ -68,13 +98,15 @@ const Form = (props) => {
                 <div className="form-group row">
                   <div className="form-floating m-4 mt-0">
                     <input
-                      for="imc"
                       type="text"
                       id="floatingIMC"
                       className="form-control text-center"
                       placeholder="imc"
+                      name = 'visceralFat'
+                      value = { visceralFat }
+                      onChange = { handleInputChange }
                     />
-                    <label for="floatingIMC" className="floatingInput">
+                    <label htmlFor="floatingIMC" className="floatingInput">
                       Indice Grasa Viseral
                     </label>
                   </div>
@@ -82,20 +114,37 @@ const Form = (props) => {
                 <div className="form-group row">
                   <div className="form-floating m-4 mt-0">
                     <input
-                      for="imc"
                       type="text"
                       id="floatingIMC"
                       className="form-control text-center"
                       placeholder="imc"
+                      name = 'waitstMeasurement'
+                      value = { waitstMeasurement }
+                      onChange = { handleInputChange }
                     />
-                    <label for="floatingIMC" className="floatingInput">
+                    <label htmlFor="floatingIMC" className="floatingInput">
                       Medida de cintura
                     </label>
                   </div>
                 </div>
               </div>
             </fieldset>
-          </form>
+            <div className='d-flex justify-content-evenly'>
+            <Button            
+              buttonType="primary"
+              label="Terminar"
+              type="submit"
+            />
+             <Button
+            btnOnClick={() => {
+              reset()
+            }}
+            buttonType="secondary"
+            label="Limpiar"
+            type="button"
+          />
+            </div>
+          </form>                   
         </div>
       </div>
     </>

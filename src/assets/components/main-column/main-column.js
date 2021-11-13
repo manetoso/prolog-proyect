@@ -8,23 +8,7 @@ const MainColumn = (props) => {
   return (
     <div className="column">
       <div className="column-bk">
-        <Form />
-        <div className="column-buttons">
-          <Button
-            btnOnClick={() => {
-              console.log("Clean");
-            }}
-            buttonType="secondary"
-            label="Limpiar"
-          />
-          <Button
-            btnOnClick={() => {
-              console.log("Calculate");
-            }}
-            buttonType="primary"
-            label="Terminar"
-          />
-        </div>
+        <Form />        
       </div>
     </div>
   );
